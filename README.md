@@ -2,7 +2,7 @@
 This project is related to at the University of Tartu, Institute of Computer Science. 
 Our project consists of two main parts:
 *  Handling multilinguality in text classification
-*  Expanding the available data with Round-trip-translation
+*  Expanding the available data with Round-trip-translation edit
 
 
 # Datset: 
