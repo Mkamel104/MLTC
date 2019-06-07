@@ -2,6 +2,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 This project is related to neuarl network course at the University of Tartu, Institute of Computer Science. Our project consists of two main parts edit:
 =======
 This project is related to at the University of Tartu, Institute of Computer Science. 
@@ -15,6 +16,10 @@ Our project consists of two main parts:
 This project is related to at the University of Tartu, Institute of Computer Science. 
 Our project consists of two main parts:
 >>>>>>> 6cad3b5b2ab327d4178ae07e6eaa252210a94c3a
+=======
+This project is related to at the University of Tartu, Institute of Computer Science. 
+Our project consists of two main parts:
+>>>>>>> 5756540e9b3f00a32eff8da9208fb3bde93a1448
 *  Handling multilinguality in text classification
 *  Expanding the available data with Round-trip-translation edit
 
