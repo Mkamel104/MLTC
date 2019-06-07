@@ -23,9 +23,9 @@
 
 \begin{document}
 
-\title{Handle Multilinguality in Text classification}
+\title{Multilinguality in Text classification (MLTC)}
 
-\author{Nesma Mahmoud: B8771\\ Mahmoud Shoush: B87770\\ [1cm]{\small Natural language processing (LTAT.01.001) - Spring 2019}}
+\author{Mahmoud Shoush: B87770\\ [1cm]{\small Natural language processing (LTAT.01.001) - Spring 2019}}
 
 %\author{Mahmoud Kamel}
 %\date{\today}
@@ -45,7 +45,7 @@ $\bullet$ \textbf{Joint translated monolingual.}
 
 $\bullet$ \textbf{Round trip translation.}\\
 
-We did experiments using different models, and find the round trip translation is the best one to handle MLTC. \textbf{Still need more explanation}.
+We did experiments using Allennlp, and find the round trip translation approach is the best one to handle MLTC.
 
 
 \end{abstract}
@@ -91,8 +91,8 @@ There has been research on MLTC in the case of enough training documents being a
 
 
 \section{Proposed Approach}
-In this section, we will explain in details our proposed approach through the whole four main stages that we mentioned before. The proposed methods have been implemented based on the STOA NLP frameworks such as Bert \cite{bert}, Elmo \cite{elmo}, and Alennlp \cite{allen}. The code and detailed implementation can be found in \href{https://github.com/nesmaAlmoazamy/Handling_Multilinguality }{Handling\_Multilinguality repo}. For this project we find a  
- \href{https://github.com/valeriano-manassero/multilingual-text-categorization-dataset}{multilingual-text-categorization-dataset} that contains 33 languages and 45 categories. After exploring the dataset we discovered that it's not balanced (some of the languages are more bigger than the others), and for this project we used only five languages (English, Arabic, French, Spanish, and Estonian).
+In this section, we will explain in details our proposed approach through the whole four main stages that we mentioned before. The proposed methods have been implemented based on two different NLP frameworks such as Alennlp \cite{allen} and Keras. The code and detailed implementation can be found in \href{https://github.com/Mkamel104/MLTC}{MLTC repo}. For this project we find a  
+ \href{https://github.com/valeriano-manassero/multilingual-text-categorization-dataset}{multilingual-text-categorization-dataset} that contains 33 languages and 45 categories. After exploring the dataset we discovered that it's not balanced (some of the languages are more bigger than the others), and for this project we used only four languages (English, Arabic, French, and Spanish).
 
 
 
@@ -126,13 +126,13 @@ In this section, we will explain in details our proposed approach through the wh
 In this section, we will talk about the basic steps of \href{https://github.com/nesmaAlmoazamy/Handling_Multilinguality/blob/master/EnglishData_classification_with_preprocessing.ipynb}{text preprocessing}. These steps are needed for transferring text from human language to machine-readable format for further processing. After a text is obtained, we start with text normalization. Text normalization includes converting all letters to lower case, remove stop words, numbers, punctuation, blank space, and URL, stemming, and lemmatization. This dataset contains blog posts labeled by language and by category.
 
 In this step we used a Keras framework to build our classifier and apply it on EnglishData only with/without preprocessing, (see figure~\ref{fig:3}) and (\ref{fig:4}) respectively. We can see obviously that heavy preprocessing gives negative impact on the classification process. Here can check the implementation of 
-\href{https://github.com/nesmaAlmoazamy/Handling_Multilinguality/blob/master/EnglishData_classification_with_preprocessing.ipynb}{with preprocessing}, and \href{https://github.com/nesmaAlmoazamy/Handling_Multilinguality/blob/master/EnglishData_Classification_without_preprocessing.ipynb}{without pre-processing}.
+\href{https://github.com/Mkamel104/MLTC/blob/master/EnglishData_classification_with_preprocessing.ipynb}{with preprocessing}, and \href{https://github.com/Mkamel104/MLTC/blob/master/EnglishData_Classification_without_preprocessing.ipynb}{without pre-processing}.
 
 
 
 \subsection{Multiple Monolingual Classification}
-This is the first method to tackle the the MLTC problem. In this approach we classify all of the languages (English, Arabic, French, Spanish, and Estonian) by a separate classification model (see figure~\ref{fig:5}) using different models such as Flair, and Allennlp. 
-\href{https://github.com/nesmaAlmoazamy/Handling_Multilinguality/blob/master/AllenNlp_SingleClassifier_All_RoundTrip.ipynb}{Here} you can see check the Allennlp implementation for each language separately. Also we used Flair Embedding and Glove over English dataset with 2 categories as a POC due to resources shortage \href{https://github.com/nesmaAlmoazamy/Handling_Multilinguality/blob/master/FlairEnglishClassificationPOC.ipynb}{here} and when it compares to Allennlp implementation we got accuracy around 65 \% which is an improvement over Allennlp. From this step we find that using Flair has an advantage over Allennlp implementation.
+This is the first method to tackle the the MLTC problem. In this approach we classify all of the languages (English, Arabic, French, Spanish, and Estonian) by a separate classification model (see figure~\ref{fig:5}) using Allennlp. 
+\href{https://github.com/Mkamel104/MLTC/blob/master/AllenNlp/AllenNlp_PHASEI_PHASEII_PHASEIII.ipynb}{Here} you can see check the Allennlp implementation for each language separately. We got different accuracies for this step for each language (English: 18\%, Arabic: 28\% , French: 20\% , Spanish:23\%)
 
 
 
@@ -161,12 +161,12 @@ This is the first method to tackle the the MLTC problem. In this approach we cla
 \end{figure*}
 
 \subsection{Joint multilingual approach}
-In the second method that we propose to handle MLTC, we classify all of the languages together with single classification system (see figure~\ref{fig:6}) using different models as the previous step. \href{https://github.com/nesmaAlmoazamy/Handling_Multilinguality/blob/master/AllenNlp_SingleClassifier_All_RoundTrip.ipynb}{here} you cand find the Allennlp implementation for this approach, however in this step all languages are concatenated and the dataset splited into 80\%, 20\% for training step and 20\% from all languages was selected as validation. Also, we did validation using a subset from the English dataset, which was excluded before spliting the whole data frame into train and dev and got accuracy around 75\%. 
+In the second method that we propose to handle MLTC, we classify all of the languages together with single classification system (see figure~\ref{fig:6}) using different models as the previous step. \href{https://github.com/Mkamel104/MLTC/blob/master/AllenNlp/AllenNlp_PHASEI_PHASEII_PHASEIII.ipynb}{here} you cand find the Allennlp implementation for this approach, however in this step all languages are concatenated and the dataset splited into 80\%, 20\% for training step and 20\% from all languages was selected as validation and we got accuracy around 23\%. Also, we did validation using a subset from the English dataset, which was excluded before spliting the whole data frame into train and dev and got accuracy around 75\%. 
 
 
 
 \subsection{Joint translated monolingual}
-This is the third method that we propose to handle the MLTC problem. In this method all languages are translated into one super-language - English - and then classified all together (see figure~\ref{fig:7}). For this approach we tried to use different public translation service such as \href{https://py-googletrans.readthedocs.io/en/latest/}{googletrans}, and \href{https://www.ibm.com/watson/services/language-translator/}{Watson IBM languge translator}, but in this public services the free usage is so limited per character and per account credentials then accordingly we didn't able to apply this step for the whole dataset however we minimize the number of words per row to fifty words. You can find detailed implementation  \href{https://github.com/nesmaAlmoazamy/Handling_Multilinguality/blob/master/IBMTranslationPOC.ipynb}{here}. \textbf{Add results about accuracy??????}
+This is the third method that we propose to handle the MLTC problem. In this method all languages (Arabic, Spanish, French, and Turkish) are translated into one super-language - English - and then classified all together (see figure~\ref{fig:7}). For this approach we tried to use different public translation service such as \href{https://py-googletrans.readthedocs.io/en/latest/}{googletrans}, and \href{https://www.ibm.com/watson/services/language-translator/}{Watson IBM languge translator}, but using these public services the free usage is so limited per character and per account credentials then accordingly we didn't able to apply this step for the whole dataset however we minimize the number of words per row to fifty words. You can find detailed implementation  \href{https://github.com/Mkamel104/MLTC/blob/master/AllenNlp/AllenNlp_PHASEI_PHASEII_PHASEIII.ipynb}{here}. \textbf{Add results about accuracy??????}
 
 
 \begin{figure*}
@@ -193,7 +193,7 @@ This is the third method that we propose to handle the MLTC problem. In this met
 \end{figure*}
 
 \subsection{Round Trip Translation.}
-In this last approach we used round trip translation to expand the available data. In this method we translated all languages to English, then add the translated part to the original dataset to expand it, after that apply our classifier to the expanded dataset(see figure~\ref{fig:9}). \href{https://github.com/nesmaAlmoazamy/Handling_Multilinguality/blob/master/AllenNlp_SingleClassifier_All_RoundTrip.ipynb}{Here} you can find the implementation of the RT applied Arabic \textbf{Add other languages} and we got accuracy around 24\%.
+In this last approach we used round trip translation to expand the available data. In this method we translated all languages (Arabic, French, Spanish, and Turkish) to English, then add the translated part to the original dataset to expand it, after that apply our classifier to the expanded dataset(see figure~\ref{fig:9}). \href{https://github.com/Mkamel104/MLTC/blob/master/AllenNlp/AllenNlp_PHASEI_PHASEII_PHASEIII.ipynb}{Here} you can find the implementation of the RT applied Arabic \textbf{Add results} and we got accuracy around 24\%.
 
 
 
@@ -211,7 +211,7 @@ In this last approach we used round trip translation to expand the available dat
 	\end{minipage}\qquad
 	\begin{minipage}[b]{.4\textwidth}
 		
-		\centering \includegraphics[width=0.8\columnwidth]{6.png}
+		\centering \includegraphics[width=0.8\columnwidth]{out.png}
 		
 		\caption{
 			\label{fig:10} % spaces are big no-no withing labels
@@ -223,7 +223,7 @@ In this last approach we used round trip translation to expand the available dat
 
 
 \section{Conclusion and discussion}
-In this section we will conclude our experiments and results. We proposed four approaches to tackle the multilinguality in text classification for each approach we used different models frameworks. \textbf{Add explanation after fulfilling the missing results}
+In this section we will conclude our experiments and results (see figure~\ref{fig:10}).. We proposed four approaches to tackle the multilinguality in text classification for each approach we used different models frameworks. When it comes to compare the four approaches we can see that the Round Trip, and the Joint translated monolingual are better than classifying each language separately or all languages together using one classifier. When we analyze the results we can say that for the round translation and Joint translated monolingual we expanding the original dataset with more English text which improves the training process and result in better accuracy. For the first two parts we only use the dataset as it without any modification and as we mentioned in introduction the dataset is not balanced and there are languages that more sparse than the others. 
 
 
 
