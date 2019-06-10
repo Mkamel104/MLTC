@@ -7,7 +7,7 @@ Our project consists of two main parts:
 
 # Datset: 
 * [multilingual-text-categorization-dataset](https://github.com/valeriano-manassero/multilingual-text-categorization-dataset)
-[Watson IBM](https://www.ibm.com/watson/services/language-translator/)
+
 
  
 
