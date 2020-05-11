@@ -5,7 +5,7 @@ Our project consists of two main parts:
 *  Expanding the available data with Round-trip-translation
 
 
-# Datset: 
+# Dataset: 
 * [multilingual-text-categorization-dataset](https://github.com/valeriano-manassero/multilingual-text-categorization-dataset)
 
 
